@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ROUT AUTOMOBILES Invoice</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    .invoice-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 1000px;
+      margin: auto;
+    }
+    .logo {
+      text-align: center;
+    }
+    .logo img {
+      width: 180px;
+    }
+    h1 {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .company-details {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .customer-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .customer-info .field {
+      flex: 1 1 23%;
+    }
+    .customer-info label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .customer-info input {
+      width: 100%;
+      padding: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    table th {
+      background-color: #e9eff5;
+    }
+    .total-row td {
+      font-weight: bold;
+      background-color: #f2f2f2;
+    }
+    .actions {
+      margin-top: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .actions button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .actions button.whatsapp {
+      background-color: #25D366;
+    }
+    .thank-you {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    @media print {
+      .actions { display: none; }
+      body { background: #fff; }
+      .invoice-box { box-shadow: none; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice-box">
+    <div class="logo">
+      <img src="ChatGPT Image May 2, 2025, 11_58_23 AM.png" alt="ROUT AUTOMOBILES Logo" />
+    </div>
+    <h1>ROUT AUTOMOBILES GARAGE</h1>
+    <div class="company-details">
+      Bharatpur, Bhubaneswar, Odisha 751003<br/>
+      Contact: 9777954478
+    </div>
+
+    <div class="customer-info">
+      <div class="field">
+        <label>Customer Name</label>
+        <input type="text" placeholder="Enter customer name" />
+      </div>
+      <div class="field">
+        <label>Vehicle Number</label>
+        <input type="text" placeholder="Enter vehicle number" />
+      </div>
+      <div class="field">
+        <label>Mobile Number</label>
+        <input type="text" placeholder="Enter mobile number" />
+      </div>
+      <div class="field">
+        <label>Date</label>
+        <input type="date" />
+      </div>
+    </div>
+
+    <table id="items">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Quantity</th>
+          <th>Unit Price (₹)</th>
+          <th>Amount (₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>
+            <input list="labourTasks" placeholder="Select or type description" style="width: 100%;" />
+            <datalist id="labourTasks">
+       <option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+<option value="Diesel filter change">Diesel filter change</option>
+<option value="Diesel filter inspection">Diesel filter inspection</option>
+<option value="Petrol filter change">Petrol filter change</option>
+<option value="Petrol filter inspection">Petrol filter inspection</option>
+<option value="Air filter replacement">Air filter replacement</option>
+<option value="Air filter cleaning">Air filter cleaning</option>
+<option value="Oil filter replacement">Oil filter replacement</option>
+<option value="Oil filter inspection">Oil filter inspection</option>
+<option value="Wheel alignment">Wheel alignment</option>
+<option value="Wheel balancing">Wheel balancing</option>
+<option value="Wheel rotation">Wheel rotation</option>
+<option value="Tyre rotation">Tyre rotation</option>
+<option value="Tyre replacement">Tyre replacement</option>
+<option value="Caliper greasing">Caliper greasing</option>
+<option value="Caliper repair">Caliper repair</option>
+<option value="Throttle body cleaning">Throttle body cleaning</option>
+<option value="Throttle body service">Throttle body service</option>
+<option value="Headlight bulb replacement">Headlight bulb replacement</option>
+<option value="Headlight bulb adjustment">Headlight bulb adjustment</option>
+<option value="Fog light repair">Fog light repair</option>
+<option value="Fog light replacement">Fog light replacement</option>
+<option value="Door panel repair">Door panel repair</option>
+<option value="Door panel denting">Door panel denting</option>
+<option value="Door panel welding">Door panel welding</option>
+<option value="Roof repair">Roof repair</option>
+<option value="Roof painting">Roof painting</option>
+<option value="AC filter cleaning">AC filter cleaning</option>
+<option value="AC filter replacement">AC filter replacement</option>
+<option value="Wiper blade replacement">Wiper blade replacement</option>
+<option value="Bumper denting">Bumper denting</option>
+<option value="Bumper replacement">Bumper replacement</option>
+<option value="Fuel pump repair">Fuel pump repair</option>
+<option value="Fuel pump replacement">Fuel pump replacement</option>
+<option value="Timing belt replacement">Timing belt replacement</option>
+<option value="Timing belt inspection">Timing belt inspection</option>
+<option value="Battery replacement">Battery replacement</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Interior vacuum cleaning">Interior vacuum cleaning</option>
+<option value="Interior detailing">Interior detailing</option>
+<option value="Underbody coating">Underbody coating</option>
+<option value="Underbody inspection">Underbody inspection</option>
+<option value="Door latch repair">Door latch repair</option>
+<option value="Door latch replacement">Door latch replacement</option>
+<option value="Clutch plate replacement">Clutch plate replacement</option>
+<option value="Clutch plate adjustment">Clutch plate adjustment</option>
+<option value="Gearbox oil change">Gearbox oil change</option>
+<option value="Gearbox repair">Gearbox repair</option>
+<option value="Radiator repair">Radiator repair</option>
+<option value="Radiator flush">Radiator flush</option>
+<option value="Exhaust system repair">Exhaust system repair</option>
+<option value="Exhaust system replacement">Exhaust system replacement</option>
+<option value="Spark plug replacement">Spark plug replacement</option>
+<option value="Spark plug inspection">Spark plug inspection</option>
+<option value="AC system recharge">AC system recharge</option>
+<option value="AC system service">AC system service</option>
+<option value="Fuel injector cleaning">Fuel injector cleaning</option>
+<option value="Fuel injector testing">Fuel injector testing</option>
+<option value="Power steering fluid change">Power steering fluid change</option>
+<option value="Power steering inspection">Power steering inspection</option>
+<option value="Wheel bearing replacement">Wheel bearing replacement</option>
+<option value="Brake line repair">Brake line repair</option>
+<option value="Brake line bleeding">Brake line bleeding</option>
+<option value="Differential service">Differential service</option>
+<option value="Differential oil change">Differential oil change</option>
+<option value="Transmission fluid change">Transmission fluid change</option>
+<option value="Transmission service">Transmission service</option>
+<option value="Engine tune-up">Engine tune-up</option>
+<option value="Engine overhaul">Engine overhaul</option>
+<option value="Battery terminal cleaning">Battery terminal cleaning</option>
+<option value="Alternator repair">Alternator repair</option>
+<option value="Alternator replacement">Alternator replacement</option>
+<option value="Starter motor repair">Starter motor repair</option>
+<option value="Starter motor replacement">Starter motor replacement</option>
+<option value="Shock absorber replacement">Shock absorber replacement</option>
+<option value="Shock absorber inspection">Shock absorber inspection</option>
+<option value="Timing chain replacement">Timing chain replacement</option>
+<option value="Timing chain inspection">Timing chain inspection</option>
+<option value="Window regulator replacement">Window regulator replacement</option>
+<option value="Window regulator repair">Window regulator repair</option>
+<option value="Tail light repair">Tail light repair</option>
+<option value="Tail light replacement">Tail light replacement</option>
+<option value="Suspension service">Suspension service</option>
+<option value="Suspension repair">Suspension repair</option>
+<option value="Muffler repair">Muffler repair</option>
+<option value="Muffler replacement">Muffler replacement</option>
+<option value="Catalytic converter inspection">Catalytic converter inspection</option>
+<option value="Catalytic converter replacement">Catalytic converter replacement</option>
+<option value="Fuel tank repair">Fuel tank repair</option>
+<option value="Fuel tank cleaning">Fuel tank cleaning</option>
+<option value="Brake pad replacement">Brake pad replacement</option>
+<option value="Brake pad inspection">Brake pad inspection</option>
+<option value="Brake disc replacement">Brake disc replacement</option>
+<option value="Brake disc skimming">Brake disc skimming</option>
+<option value="Engine oil change">Engine oil change</option>
+<option value="Engine oil refill">Engine oil refill</option>
+<option value="Coolant top-up">Coolant top-up</option>
+<option value="Coolant flush">Coolant flush</option>
+<option value="Brake oil change">Brake oil change</option>
+<option value="Brake oil bleeding">Brake oil bleeding</option>
+            </datalist>
+          </td>
+          <td>
+            <select>
+              <option value="part">Part</option>
+              <option value="labour">Labour</option>
+            </select>
+          </td>
+          <td><input type="number" value="1" min="0" style="width:70px" /></td>
+          <td><input type="number" value="0" min="0" step="0.01" style="width:90px" /></td>
+          <td class="amount">0.00</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="5" style="text-align:right">Total (₹)</td>
+          <td id="total">0.00</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="actions">
+      <button onclick="addRow()">➕ Add Item</button>
+      <button onclick="window.print()">🖨️ Print</button>
+      <button class="whatsapp" onclick="sendWhatsApp()">📤 Send to WhatsApp</button>
+    </div>
+
+    <div class="thank-you">Thank you for choosing Rout Automobiles Garage!</div>
+  </div>
+
+<script>
+function addRow() {
+  const tbody = document.querySelector('#items tbody');
+  const rowCount = tbody.rows.length;
+  const row = tbody.insertRow();
+  row.innerHTML = `
+    <td>${rowCount + 1}</td>
+    <td>
+      <input list="labourTasks" placeholder="Select or type description" style="width: 100%;" />
+    </td>
+    <td>
+      <select>
+        <option value="part">Part</option>
+        <option value="labour">Labour</option>
+      </select>
+    </td>
+    <td><input type="number" value="1" min="0" style="width:70px" /></td>
+    <td><input type="number" value="0" min="0" step="0.01" style="width:90px" /></td>
+    <td class="amount">0.00</td>
+  `;
+  updateTotals();
+}
+
+function updateTotals() {
+  let total = 0;
+  const rows = document.querySelectorAll('#items tbody tr');
+  rows.forEach(row => {
+    const qty = Number(row.cells[3].querySelector('input').value) || 1;
+    const price = Number(row.cells[4].querySelector('input').value) || 0;
+    const amount = qty * price;
+    row.cells[5].textContent = amount.toFixed(2);
+    total += amount;
+  });
+  document.getElementById('total').textContent = total.toFixed(2);
+}
+
+document.addEventListener('input', e => {
+  if (e.target.tagName === 'INPUT') updateTotals();
+});
+
+function sendWhatsApp() {
+  const number = prompt("Enter WhatsApp number (with country code):");
+  if (!number) return;
+  const total = document.getElementById('total').textContent;
+  const message = encodeURIComponent(`ROUT AUTOMOBILES GARAGE\nTotal Charges: ₹${total}\nThank you for your visit!`);
+  window.open(`https://wa.me/${number}?text=${message}`, '_blank');
+}
+
+updateTotals();
+</script>
+</body>
+</html>
